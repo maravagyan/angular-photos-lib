@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-phots-lib": {
+    "angular-photos-lib": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-phots-lib",
+            "outputPath": "dist/angular-photos-lib",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -67,12 +68,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
           "configurations": {
             "production": {
-              "browserTarget": "angular-phots-lib:build:production"
+              "browserTarget": "angular-photos-lib:build:production"
             },
             "development": {
-              "browserTarget": "angular-phots-lib:build:development"
+              "browserTarget": "angular-photos-lib:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-phots-lib:build"
+            "browserTarget": "angular-photos-lib:build"
           }
         },
         "test": {
@@ -96,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -103,5 +106,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "ee29e872-324e-4e37-9671-c506749186b2"
   }
 }

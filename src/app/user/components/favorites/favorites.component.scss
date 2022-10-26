@@ -1,0 +1,20 @@
+.photos-container{
+  width: 90%;
+  margin: 10px auto;
+
+  img {
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    }
+
+  .remove-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+h1 {
+  margin: 20px 0 0 35px !important;
+}

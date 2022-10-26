@@ -1,0 +1,10 @@
+
+<div class="photos-container" #photosContainer *ngIf="favorites.length">
+  <mat-grid-list cols="6" cols="6" rowHeight="200px" [gutterSize]="'10px'" >
+    <mat-grid-tile colspan="2"
+        *ngFor="let photo of favorites" >
+          <img [src]="photo.url" [alt]="photo.title" (click)="goToSinglePhoto(photo)">
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<h1 *ngIf="!favorites.length">There are no favorite photos!</h1>

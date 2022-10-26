@@ -1,0 +1,12 @@
+
+<div class="photos-container" #photosContainer>
+  <mat-grid-list cols="6" cols="6" rowHeight="200px" [gutterSize]="'10px'" >
+    <mat-grid-tile colspan="2"
+        *ngFor="let photo of photosList">
+          <img [src]="photo.url" [alt]="photo.title" (click)="goToSinglePhoto(photo)">
+          <mat-icon *ngIf="!photo.isInFavorite" class="icon" (click)="addToFavorites(photo)">favorite_border</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div *ngIf="loading" class="spinner"> <mat-spinner></mat-spinner></div>
+</div>
+

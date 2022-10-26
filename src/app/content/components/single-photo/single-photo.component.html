@@ -1,0 +1,16 @@
+<div *ngIf="selectedPhoto.id">
+  <div class="container">
+    <img [src]="selectedPhoto.url" [alt]="selectedPhoto.title" />
+  </div>
+
+  <div class="container">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="removeFromFavorites(selectedPhoto)"
+    >
+      Remove from favorites
+    </button>
+  </div>
+</div>
+

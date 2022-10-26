@@ -1,0 +1,15 @@
+
+
+.header-container{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+
+  button {
+    padding: 10px;
+    margin: 20px;
+    width: 150px;
+  }
+}

@@ -1,0 +1,32 @@
+.photos-container{
+  width: 90%;
+  margin: 10px auto;
+
+  img {
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    }
+
+    .icon{
+      position: absolute;
+      top: 0;
+
+      &:hover{
+        opacity: 0.5;
+      }
+
+  }
+
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+
+
+
+

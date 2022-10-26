@@ -1,5 +1,5 @@
 {
-  "name": "angular-phots-lib",
+  "name": "angular-photos-lib",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,11 +10,13 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.2.0",
+    "@angular/animations": "^14.2.7",
+    "@angular/cdk": "^14.2.5",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/core": "^14.2.0",
     "@angular/forms": "^14.2.0",
+    "@angular/material": "^14.2.5",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
