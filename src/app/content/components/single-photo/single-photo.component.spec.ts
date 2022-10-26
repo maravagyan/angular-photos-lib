@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DataService } from 'src/app/services/data.service';
+import { PhotosService } from '../../services/photos.service';
 
 import { SinglePhotoComponent } from './single-photo.component';
 
@@ -8,7 +12,10 @@ describe('SinglePhotoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SinglePhotoComponent ]
+      declarations: [ SinglePhotoComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [PhotosService, DataService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

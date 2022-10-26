@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { take, takeUntil, tap } from 'rxjs';
 import { IPhoto } from 'src/app/shared/models/photo.interface';
 import { PhotosService } from '../../services/photos.service';
 
@@ -19,15 +20,15 @@ export class PhotosComponent implements OnInit {
   loading = false;
   photosList: Array<IPhoto> = [];
   tempPhotosList: Array<IPhoto> = [];
-  photoItemsCount: number = 0;
-  photosContainerHeight: number = 0;
-  coefficentForScrolling: number = 563;
-  initialPhotosCount: number = 9;
+  photoItemsCount = 0;
+  photosContainerHeight = 0;
+  coefficentForScrolling = 563;
+  initialPhotosCount = 9;
   favorites!: Array<IPhoto>;
 
   constructor(
-    private photosService: PhotosService,
-    private router: Router) {}
+    public photosService: PhotosService,
+    public router: Router) {}
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -46,23 +47,32 @@ export class PhotosComponent implements OnInit {
       this.photosList.push(...arr);
     }
   }
-  ngOnInit() {
-    this.favorites = JSON.parse(window.localStorage.getItem('favorites') as any)
-    this.photosService.getPhotos().subscribe((data: Array<IPhoto>) => {
-      this.tempPhotosList = data.slice(0, 150);
-      this.photosList = this.tempPhotosList.slice(0, this.initialPhotosCount);
-      this.photosList.forEach((photo) => {
-        this.favorites.forEach((favorite) => {
-          if(photo.id === favorite.id){
-            photo.isInFavorite = favorite.isInFavorite
-          }
-        })
-      })
-    });
 
+  ngOnInit() {
+    this.getFavorites();
+    this.photosService.getPhotos()
+    .pipe(
+      take(1))
+     .subscribe(this.processPhotos.bind(this))
   }
 
-  addToFavorites(selected: any) {
+  processPhotos(data: Array<IPhoto>): void{
+    this.tempPhotosList = data.slice(0, 150);
+    this.photosList = this.tempPhotosList.slice(0, this.initialPhotosCount);
+    this.photosList.forEach((photo) => {
+      this.favorites.forEach((favorite) => {
+        if(photo.id === favorite.id){
+          photo.isInFavorite = favorite.isInFavorite
+        }
+      })
+    })
+  }
+
+  getFavorites(): void {
+    this.favorites = JSON.parse(window.localStorage.getItem('favorites') as any)
+  }
+
+  addToFavorites(selected: IPhoto): void {
     selected.isInFavorite = true;
       this.favorites.push(selected);
       window.localStorage.setItem('favorites', JSON.stringify(this.favorites));

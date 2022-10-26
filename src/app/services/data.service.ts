@@ -25,7 +25,7 @@ export class DataService {
   }
 
   private onSuccess<T>(res: T): void {
-    console.log(res);
+    // console.log(res);
   }
 
   private onError(error: any): void {

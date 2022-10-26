@@ -21,8 +21,6 @@ export class SinglePhotoComponent implements OnInit {
       this.selectedPhoto =selected
     })
     this.favorites = JSON.parse(window.localStorage.getItem('favorites') as any);
-    console.log(this.selectedPhoto);
-
   }
 
   removeFromFavorites(selectedPhoto: IPhoto){
